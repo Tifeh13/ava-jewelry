@@ -21,50 +21,63 @@
 <body>
 
   <!-- HEADER -->
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="index.html">AVA</a>
+  <!-- HEADER -->
+<header class="site-header">
+  <div class="container header-inner">
 
-      <!-- Desktop Nav -->
-      <nav class="nav-desktop">
-        <button class="nav-link active" data-filter="all">All</button>
-        <button class="nav-link" data-filter="rings">Rings</button>
-        <button class="nav-link" data-filter="necklaces">Necklaces</button>
-        <button class="nav-link" data-filter="bracelets">Bracelets</button>
-        <button class="nav-link" data-filter="earrings">Earrings</button>
-        <button class="nav-link" data-filter="watches">Watches</button>
-      </nav>
+    <!-- Brand / Logo -->
+    <a class="brand" href="index.html">
+      <img src="./img/logo.png" style="width: 70px;" alt="AVA Jewelers Logo">
+    </a>
 
-      <!-- Desktop Header Actions -->
-      <div class="header-actions-desktop">
-        <button id="searchToggleDesktop" class="search-btn">🔍</button>
-        <input type="text" id="searchInputDesktop" placeholder="Search jewelry...">
-        <a href="cart.html" class="cart-btn">🛒 <span class="badge" id="cartCount">0</span></a>
-      </div>
+    <!-- Desktop Nav -->
+    <nav class="nav-desktop">
+      <button class="nav-link active" data-filter="all">All</button>
+      <button class="nav-link" data-filter="rings">Rings</button>
+      <button class="nav-link" data-filter="necklaces">Necklaces</button>
+      <button class="nav-link" data-filter="bracelets">Bracelets</button>
+      <button class="nav-link" data-filter="earrings">Earrings</button>
+      <button class="nav-link" data-filter="watches">Watches</button>
+    </nav>
 
-      <!-- Hamburger Mobile -->
+    <!-- Desktop Header Actions -->
+    <div class="header-actions-desktop">
+      <button id="searchToggleDesktop" class="search-btn">🔍</button>
+      <input type="text" id="searchInputDesktop" placeholder="Search jewelry...">
+      <a href="cart.html" class="cart-btn">🛒 <span class="badge" id="cartCount">0</span></a>
+    </div>
+
+    <!-- Mobile Header: Hamburger + Cart -->
+    <div class="mobile-header-actions">
       <div class="hamburger" id="hamburger">
-        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
       </div>
+      <a href="cart.html" class="cart-btn mobile-cart">🛒 <span class="badge" id="cartCountMobile">0</span></a>
     </div>
 
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
-      <nav class="nav-mobile">
-        <button class="nav-link active" data-filter="all">All</button>
-        <button class="nav-link" data-filter="rings">Rings</button>
-        <button class="nav-link" data-filter="necklaces">Necklaces</button>
-        <button class="nav-link" data-filter="bracelets">Bracelets</button>
-        <button class="nav-link" data-filter="earrings">Earrings</button>
-        <button class="nav-link" data-filter="watches">Watches</button>
-      </nav>
-      <div class="header-actions-mobile">
-        <button id="searchToggleMobile" class="search-btn">🔍</button>
-        <input type="text" id="searchInputMobile" placeholder="Search jewelry...">
-        <a href="cart.html" class="cart-btn">🛒 <span class="badge" id="cartCountMobile">0</span></a>
-      </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <nav class="nav-mobile">
+      <button class="nav-link active" data-filter="all">All</button>
+      <button class="nav-link" data-filter="rings">Rings</button>
+      <button class="nav-link" data-filter="necklaces">Necklaces</button>
+      <button class="nav-link" data-filter="bracelets">Bracelets</button>
+      <button class="nav-link" data-filter="earrings">Earrings</button>
+      <button class="nav-link" data-filter="watches">Watches</button>
+    </nav>
+
+    <div class="header-actions-mobile">
+      <button id="searchToggleMobile" class="search-btn">🔍</button>
+      <input type="text" id="searchInputMobile" placeholder="Search jewelry...">
+      <!-- Cart removed from here because it's now beside hamburger -->
     </div>
-  </header>
+  </div>
+</header>
+
 
   <!-- HERO -->
   <section class="hero">
