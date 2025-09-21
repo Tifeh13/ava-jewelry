@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AVA Jewelers – Timeless Luxury</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style> html { scroll-behavior: smooth; } </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">AVA</a>
+
+      <!-- Desktop Nav (filter buttons) -->
+      <nav class="nav-desktop">
+        <button class="nav-link active" data-filter="all">All</button>
+        <button class="nav-link" data-filter="rings">Rings</button>
+        <button class="nav-link" data-filter="necklaces">Necklaces</button>
+        <button class="nav-link" data-filter="bracelets">Bracelets</button>
+        <button class="nav-link" data-filter="earrings">Earrings</button>
+        <button class="nav-link" data-filter="watches">Watches</button>
+      </nav>
+
+      <!-- Desktop Header Actions -->
+      <div class="header-actions-desktop">
+        <button id="searchToggleDesktop" class="search-btn">🔍</button>
+        <input type="text" id="searchInputDesktop" placeholder="Search jewelry...">
+        <!-- CART LINKED TO cart.html -->
+        <a href="cart.html" class="cart-btn">🛒 <span class="badge" id="cartCount">0</span></a>
+      </div>
+
+      <!-- Hamburger Mobile -->
+      <div class="hamburger" id="hamburger">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+      <nav class="nav-mobile">
+        <button class="nav-link active" data-filter="all">All</button>
+        <button class="nav-link" data-filter="rings">Rings</button>
+        <button class="nav-link" data-filter="necklaces">Necklaces</button>
+        <button class="nav-link" data-filter="bracelets">Bracelets</button>
+        <button class="nav-link" data-filter="earrings">Earrings</button>
+        <button class="nav-link" data-filter="watches">Watches</button>
+      </nav>
+      <div class="header-actions-mobile">
+        <button id="searchToggleMobile" class="search-btn">🔍</button>
+        <input type="text" id="searchInputMobile" placeholder="Search jewelry...">
+        <a href="cart.html" class="cart-btn">🛒 <span class="badge" id="cartCountMobile">0</span></a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner container">
+      <div class="hero-card-glass">
+        <h1>Elegance in Every Detail</h1>
+        <p>Experience exquisite craftsmanship and timeless design in rings, necklaces, and watches.</p>
+        <div class="hero-cta">
+          <a href="#products" class="btn btn-primary">Explore Collection</a>
+          <a href="cart.html" class="btn btn-outline">Your Cart</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCT GRID -->
+  <main class="catalog container" id="products">
+    <header class="section-head">
+      <h2>Featured Jewelry</h2>
+      <p>Handpicked pieces crafted for elegance and sophistication.</p>
+    </header>
+    <div class="product-grid" id="grid"></div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner container">
+      <div>
+        <h5>About AVA</h5>
+        <p>Creating timeless jewelry with precision and artistry. Our mission is to make every moment memorable.</p>
+      </div>
+      <div>
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="cart.html">Cart</a></li>
+          <li><a href="#">Checkout</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <ul>
+          <li>Email: <a href="mailto:jewelersinc101@gmail.com">jewelersinc101@gmail.com</a></li>
+          <li>Phone: <a href="tel:+18393337758">+1 (839) 333-7758</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Stay Updated</h5>
+        <form class="newsletter">
+          <input type="email" placeholder="Your email">
+          <button class="btn btn-primary">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="year"></span> AVA Jewelers. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS: store.js must load BEFORE main.js -->
+  <script src="store.js"></script>
+  <script src="main.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const cartCountElement = document.getElementById("cart-count"); // or whatever id your cart span has
+      let count = localStorage.getItem("cartCount") || "0";
+      cartCountElement.textContent = count;
+    });
+  </script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // Get the saved cart count or default to 0
+    const cartCount = localStorage.getItem("cartCount") || "0";
+
+    // Update both desktop and mobile badges
+    const desktopBadge = document.getElementById("cartCount");
+    const mobileBadge = document.getElementById("cartCountMobile");
+
+    if (desktopBadge) desktopBadge.textContent = cartCount;
+    if (mobileBadge) mobileBadge.textContent = cartCount;
+  });
+</script>  
+</body>
+</html>
+

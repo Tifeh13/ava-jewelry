@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AVA Jewelers – Secure Payment</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(135deg, #0b0b0b, #1a1a1a);
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+    }
+    .payment-container {
+      max-width: 500px;
+      margin: 60px auto;
+      padding: 2rem;
+      background: rgba(255,255,255,0.05);
+      border-radius: 16px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      font-family: 'Cormorant Garamond', serif;
+    }
+    .btn-pay {
+      width: 100%;
+      padding: 1rem;
+      background: #d4af37;
+      border: none;
+      border-radius: 8px;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .btn-pay:hover { background: #b89529; }
+    .payment-methods { display: flex; justify-content: space-around; margin-bottom: 1.5rem; }
+    .method { cursor: pointer; padding: 0.75rem 1rem; border: 2px solid transparent; border-radius: 8px; transition: 0.3s; }
+    .method.active { border: 2px solid #d4af37; background: rgba(255,215,0,0.1); }
+    .wallet { margin: 1rem 0; padding: 0.75rem; background: rgba(255,255,255,0.08); border-radius: 10px; word-wrap: break-word; cursor: pointer; }
+    .wallet:hover { background: rgba(255,215,0,0.1); }
+    .copied { color: #d4af37; font-weight: bold; margin-top: 0.5rem; display: none; }
+    .success-msg { margin-top: 1rem; text-align: center; color: #4caf50; font-weight: bold; display: none; }
+  </style>
+</head>
+<body>
+  <div class="payment-container">
+    <h2>Secure Payment</h2>
+    <div class="payment-methods">
+      <div class="method active" data-method="btc">₿ Bitcoin</div>
+      <div class="method" data-method="eth">Ξ Ethereum</div>
+    </div>
+
+    <div id="btcForm" style="text-align:center;">
+      <p>Send BTC to this wallet address:</p>
+      <div class="wallet" onclick="copyWallet('btcAddress')">
+        <span id="btcAddress">3FeV22GRQE7erquw1Eji9RCE3FSixF7Ajh</span>
+      </div>
+      <div class="copied" id="btcCopied">✅ Copied!</div>
+      <p>Once payment is received, your order will be confirmed.</p>
+      <button class="btn-pay" onclick="confirmPayment()">I Have Paid</button>
+    </div>
+
+    <div id="ethForm" style="display: none; text-align:center;">
+      <p>Send ETH to this wallet address:</p>
+      <div class="wallet" onclick="copyWallet('ethAddress')">
+        <span id="ethAddress">0x7c02f66a4Ca55C1d1042DA514DAFe1348dFf82eD</span>
+      </div>
+      <div class="copied" id="ethCopied">✅ Copied!</div>
+      <p>Once payment is received, your order will be confirmed.</p>
+      <button class="btn-pay" onclick="confirmPayment()">I Have Paid</button>
+    </div>
+
+    <p class="success-msg" id="successMsg">✅ Payment confirmed. Redirecting...</p>
+  </div>
+
+  <script>
+    // Copy wallet to clipboard
+    function copyWallet(id) {
+      const el = document.getElementById(id);
+      navigator.clipboard.writeText(el.textContent).then(() => {
+        const msg = document.getElementById(id === 'btcAddress' ? 'btcCopied' : 'ethCopied');
+        msg.style.display = 'block';
+        setTimeout(() => msg.style.display = 'none', 1500);
+      });
+    }
+
+    function confirmPayment() {
+      // 1️⃣ Clear cart completely
+      if (window.store && window.store.clearCart) {
+        window.store.clearCart();
+      } else {
+        localStorage.removeItem("ava_cart_v1");
+        localStorage.setItem("cartTotal", "0");
+      }
+
+      // 2️⃣ Show confirmation message
+      document.getElementById("successMsg").style.display = "block";
+
+      // 3️⃣ Redirect to index.html after 2 seconds
+      setTimeout(() => {
+        window.location.href = "index.html";
+      }, 2000);
+    }
+
+    // Optional: method switch
+    document.querySelectorAll(".method").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".method").forEach(m => m.classList.remove("active"));
+        btn.classList.add("active");
+        const method = btn.dataset.method;
+        document.getElementById("btcForm").style.display = method === "btc" ? "block" : "none";
+        document.getElementById("ethForm").style.display = method === "eth" ? "block" : "none";
+      });
+    });
+  </script>
+</body>
+</html>
