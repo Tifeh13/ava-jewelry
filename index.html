@@ -4,17 +4,28 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>AVA Jewelers – Timeless Luxury</title>
+
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
   <link rel="stylesheet" href="styles.css">
-  <style> html { scroll-behavior: smooth; } </style>
+
+  <!-- Favicon -->
+  <link rel="icon" href="./img/favicon.png" type="image/png">
+
+  <style>
+    html { scroll-behavior: smooth; }
+  </style>
 </head>
 <body>
+
   <!-- HEADER -->
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="index.html">AVA</a>
 
-      <!-- Desktop Nav (filter buttons) -->
+      <!-- Desktop Nav -->
       <nav class="nav-desktop">
         <button class="nav-link active" data-filter="all">All</button>
         <button class="nav-link" data-filter="rings">Rings</button>
@@ -28,7 +39,6 @@
       <div class="header-actions-desktop">
         <button id="searchToggleDesktop" class="search-btn">🔍</button>
         <input type="text" id="searchInputDesktop" placeholder="Search jewelry...">
-        <!-- CART LINKED TO cart.html -->
         <a href="cart.html" class="cart-btn">🛒 <span class="badge" id="cartCount">0</span></a>
       </div>
 
@@ -114,29 +124,33 @@
     </div>
   </footer>
 
-  <!-- SCRIPTS: store.js must load BEFORE main.js -->
+  <!-- SCRIPTS -->
   <script src="store.js"></script>
   <script src="main.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      const cartCountElement = document.getElementById("cart-count"); // or whatever id your cart span has
-      let count = localStorage.getItem("cartCount") || "0";
-      cartCountElement.textContent = count;
+      // Get cart count from localStorage
+      const cartCount = localStorage.getItem("cartCount") || "0";
+
+      // Update desktop and mobile badges
+      const desktopBadge = document.getElementById("cartCount");
+      const mobileBadge = document.getElementById("cartCountMobile");
+      if (desktopBadge) desktopBadge.textContent = cartCount;
+      if (mobileBadge) mobileBadge.textContent = cartCount;
+
+      // Update footer year
+      const yearElement = document.getElementById("year");
+      if (yearElement) yearElement.textContent = new Date().getFullYear();
+
+      // Hamburger toggle
+      const hamburger = document.getElementById("hamburger");
+      const mobileMenu = document.getElementById("mobileMenu");
+      if (hamburger && mobileMenu) {
+        hamburger.addEventListener("click", () => {
+          mobileMenu.classList.toggle("active");
+        });
+      }
     });
   </script>
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    // Get the saved cart count or default to 0
-    const cartCount = localStorage.getItem("cartCount") || "0";
-
-    // Update both desktop and mobile badges
-    const desktopBadge = document.getElementById("cartCount");
-    const mobileBadge = document.getElementById("cartCountMobile");
-
-    if (desktopBadge) desktopBadge.textContent = cartCount;
-    if (mobileBadge) mobileBadge.textContent = cartCount;
-  });
-</script>  
 </body>
 </html>
-
