@@ -1,39 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="https://img.icons8.com/?size=100&id=wzOgkYGygjIE&format=png&color=000000">
+  <link rel="apple-touch-icon" href="https://img.icons8.com/?size=100&id=wzOgkYGygjIE&format=png&color=000000">
+
+  <title>AVA Jewelry – Secure Payment</title>
+
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="styles.css">
-
-  <!-- Favicon -->
-  <link rel="icon" href="./img/favicon.png" type="image/png">
-
-  <title>AVA Jewelers – Secure Payment</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <!-- Styles -->
   <style>
     body {
       background: linear-gradient(135deg, #0b0b0b, #1a1a1a);
       color: #fff;
       font-family: 'Inter', sans-serif;
+      text-align: center;
+    }
+    .logo {
+      margin: 40px 0 20px;
+    }
+    .logo img {
+      width: 120px;
+      height: auto;
+      border-radius: 16px;
     }
     .payment-container {
-      max-width: 500px;
-      margin: 60px auto;
+      max-width: 600px;
+      margin: 20px auto 60px;
       padding: 2rem;
       background: rgba(255,255,255,0.05);
       border-radius: 16px;
       backdrop-filter: blur(10px);
       box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+      text-align: left;
     }
+    /* General Button Base */
+.btn {
+  display: inline-block;
+  padding: 12px 28px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+}
+
+/* White → Gold button */
+.btn-primary {
+  background: #fff;
+  color: #000;
+  box-shadow: 0 4px 12px rgba(255,255,255,0.15);
+}
+.btn-primary:hover {
+  background: #d4af37;
+  color: #000;
+  box-shadow: 0 6px 18px rgba(212,175,55,0.4);
+  transform: translateY(-2px);
+}
+
+/* Gold payment button */
+.btn-pay {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #d4af37, #c19d2b);
+  border: none;
+  border-radius: 10px;
+  color: #000;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 1rem;
+  box-shadow: 0 4px 14px rgba(212,175,55,0.3);
+  transition: all 0.3s ease;
+}
+.btn-pay:hover {
+  background: linear-gradient(135deg, #e6c85c, #d4af37);
+  box-shadow: 0 6px 20px rgba(212,175,55,0.5);
+  transform: translateY(-2px);
+}
+
+/* Payment method tabs */
+.method {
+  cursor: pointer;
+  padding: 0.8rem 1.5rem;
+  border: 2px solid rgba(255,255,255,0.15);
+  border-radius: 10px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  color: #fff;
+  background: rgba(255,255,255,0.05);
+}
+.method:hover {
+  border-color: #d4af37;
+  background: rgba(255,215,0,0.1);
+  transform: translateY(-2px);
+}
+.method.active {
+  border: 2px solid #d4af37;
+  background: linear-gradient(135deg, rgba(212,175,55,0.15), rgba(212,175,55,0.05));
+  box-shadow: 0 4px 12px rgba(212,175,55,0.3);
+}
+
+/* Quantity buttons (+ and -) */
+.qty-btn {
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Remove button */
+.remove-btn {
+  margin-left: 8px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 80, 80, 0.5);
+  background: rgba(255, 80, 80, 0.08);
+  color: #ff5050;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.remove-btn:hover {
+  background: #ff5050;
+  color: #000;
+  box-shadow: 0 4px 12px rgba(255, 80, 80, 0.4);
+  transform: translateY(-2px);
+}
+
+
+.qty-btn:hover {
+  background: #d4af37;
+  color: #000;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(212,175,55,0.4);
+}
+
+.qty {
+  display: inline-block;
+  min-width: 32px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #fff;
+}
+
     h2 {
       text-align: center;
       margin-bottom: 1.5rem;
       font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
     }
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      border: none;
+    }
+    .btn-primary {
+      background: #fff; color: #000;
+    }
+    .btn-primary:hover { background: #d4af37; color:#000; }
+
     .btn-pay {
       width: 100%;
       padding: 1rem;
@@ -43,19 +192,81 @@
       color: #000;
       font-weight: bold;
       cursor: pointer;
-      transition: 0.3s;
+      margin-top: 1rem;
     }
     .btn-pay:hover { background: #b89529; }
-    .payment-methods { display: flex; justify-content: space-around; margin-bottom: 1.5rem; }
-    .method { cursor: pointer; padding: 0.75rem 1rem; border: 2px solid transparent; border-radius: 8px; transition: 0.3s; }
+
+    /* Cart items */
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+      padding-bottom: 12px;
+    }
+    .cart-item img {
+      width: 70px; height: 70px; object-fit: cover;
+      border-radius: 8px; border: 1px solid rgba(255,255,255,0.15);
+    }
+    .cart-item h6 { margin: 0; font-size: 15px; }
+    .line { font-size: 13px; color: #ccc; }
+    .subtotal {
+      text-align: right;
+      font-weight: bold;
+      margin-top: 10px;
+      color: #d4af37;
+    }
+
+    /* Payment methods */
+    .payment-methods {
+      display: flex; justify-content: space-around; margin-bottom: 1.5rem;
+    }
+    .method {
+      cursor: pointer;
+      padding: 0.75rem 1rem;
+      border: 2px solid transparent;
+      border-radius: 8px;
+      transition: 0.3s;
+    }
     .method.active { border: 2px solid #d4af37; background: rgba(255,215,0,0.1); }
-    .wallet { margin: 1rem 0; padding: 0.75rem; background: rgba(255,255,255,0.08); border-radius: 10px; word-wrap: break-word; cursor: pointer; }
-    .wallet:hover { background: rgba(255,215,0,0.1); }
+
+    .wallet {
+      margin: 1rem 0;
+      padding: 0.75rem;
+      background: rgba(255,255,255,0.1);
+      border-radius: 10px;
+      word-wrap: break-word;
+      cursor: pointer;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    .wallet:hover { background: rgba(255,255,255,0.2); }
     .copied { color: #d4af37; font-weight: bold; margin-top: 0.5rem; display: none; }
     .success-msg { margin-top: 1rem; text-align: center; color: #4caf50; font-weight: bold; display: none; }
+
+    footer { text-align: center; padding: 20px 0; color: #aaa; font-size: 14px; }
   </style>
 </head>
 <body>
+  <!-- Logo -->
+  <div class="logo">
+    <a href="index.html">
+      <img src="https://img.icons8.com/?size=100&id=wzOgkYGygjIE&format=png&color=ffffff" alt="AVA Jewelry Logo">
+    </a>
+  </div>
+
+  <!-- Cart Summary -->
+  <div class="payment-container">
+    <h2>Your Order</h2>
+    <div id="cartItems"></div>
+    <div class="subtotal">Subtotal: <span id="cartSubtotal">$0.00</span></div>
+    <div style="text-align:center; margin-top:20px;">
+      <a class="btn btn-primary" id="proceedPayment" href="#">Send Order by Mail</a>
+    </div>
+  </div>
+
+  <!-- Payment Section -->
   <div class="payment-container">
     <h2>Secure Payment</h2>
     <div class="payment-methods">
@@ -69,25 +280,29 @@
         <span id="btcAddress">3FeV22GRQE7erquw1Eji9RCE3FSixF7Ajh</span>
       </div>
       <div class="copied" id="btcCopied">✅ Copied!</div>
-      <p>Once payment is received, your order will be confirmed.</p>
       <button class="btn-pay" onclick="confirmPayment()">I Have Paid</button>
     </div>
 
-    <div id="ethForm" style="display: none; text-align:center;">
+    <div id="ethForm" style="display:none;text-align:center;">
       <p>Send ETH to this wallet address:</p>
       <div class="wallet" onclick="copyWallet('ethAddress')">
         <span id="ethAddress">0x7c02f66a4Ca55C1d1042DA514DAFe1348dFf82eD</span>
       </div>
       <div class="copied" id="ethCopied">✅ Copied!</div>
-      <p>Once payment is received, your order will be confirmed.</p>
       <button class="btn-pay" onclick="confirmPayment()">I Have Paid</button>
     </div>
 
     <p class="success-msg" id="successMsg">✅ Payment confirmed. Redirecting...</p>
   </div>
 
+  <footer>
+    <p>© <span id="year"></span> AVA Jewelry. All rights reserved.</p>
+  </footer>
+
+  <script src="store.js"></script>
+  <script src="cart.js"></script>
   <script>
-    // Copy wallet to clipboard
+    // Copy wallet
     function copyWallet(id) {
       const el = document.getElementById(id);
       navigator.clipboard.writeText(el.textContent).then(() => {
@@ -98,24 +313,14 @@
     }
 
     function confirmPayment() {
-      // 1️⃣ Clear cart completely
-      if (window.store && window.store.clearCart) {
-        window.store.clearCart();
-      } else {
-        localStorage.removeItem("ava_cart_v1");
-        localStorage.setItem("cartTotal", "0");
-      }
-
-      // 2️⃣ Show confirmation message
+      localStorage.removeItem("ava_cart_v1");
       document.getElementById("successMsg").style.display = "block";
-
-      // 3️⃣ Redirect to index.html after 2 seconds
       setTimeout(() => {
         window.location.href = "index.html";
       }, 2000);
     }
 
-    // Optional: method switch
+    // Switch method
     document.querySelectorAll(".method").forEach(btn => {
       btn.addEventListener("click", () => {
         document.querySelectorAll(".method").forEach(m => m.classList.remove("active"));
@@ -125,6 +330,21 @@
         document.getElementById("ethForm").style.display = method === "eth" ? "block" : "none";
       });
     });
+
+    // Update footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Email order link
+    document.getElementById('proceedPayment').addEventListener('click', (e) => {
+      e.preventDefault();
+      const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+      const orderDetails = cart.map(i => {
+        const prod = window.store.products.find(p => p.id === i.id);
+        return prod ? `${i.qty} × ${prod.name} (${window.store.fmt.format(prod.price)})` : '';
+      }).join('\n');
+      const message = `Hello, I would like to proceed with this order:%0D%0A${orderDetails}%0D%0AThank you.`;
+      window.location.href = `mailto:jewelersinc101@gmail.com?subject=New Order&body=${message}`;
+    });
   </script>
 </body>
-</html> 
+</html>
